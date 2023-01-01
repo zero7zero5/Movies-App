@@ -8,13 +8,13 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://www.linkpicture.com/q/Screenshot-26_6.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://www.linkpicture.com/q/Screenshot-26_6.png" alt="project-screenshot" >
 
-<img src="https://www.linkpicture.com/q/Screenshot-27_8.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://www.linkpicture.com/q/Screenshot-27_8.png" alt="project-screenshot" >
 
-<img src="https://www.linkpicture.com/q/Screenshot-28_3.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://www.linkpicture.com/q/Screenshot-28_3.png" alt="project-screenshot" >
 
-<img src="https://www.linkpicture.com/q/Screenshot-29_3.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://www.linkpicture.com/q/Screenshot-29_3.png" alt="project-screenshot" >
 
   
   
