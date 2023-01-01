@@ -6,6 +6,8 @@ import Like from "./common/like";
 import { paginate } from "../services/paginate";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/Pagination";
+import _ from "lodash";
+import Caret from "./common/Caret";
 
 class Movies extends Component {
   state = {
@@ -13,6 +15,10 @@ class Movies extends Component {
     movies: [],
     pageSize: 4,
     currentPage: 1,
+    sortColumn: {
+      title: "title",
+      order: "asc",
+    },
   };
 
   componentDidMount() {
@@ -25,6 +31,21 @@ class Movies extends Component {
   };
   handlePageChange = (item) => {
     this.setState({ currentPage: item });
+  };
+  handleSort = (path) => {
+    if (this.state.sortColumn.title === path) {
+      let sortColumn = {
+        title: path,
+        order: this.state.sortColumn.order === "asc" ? "desc" : "asc",
+      };
+      this.setState({ sortColumn });
+    } else {
+      let sortColumn = {
+        title: path,
+        order: "asc",
+      };
+      this.setState({ sortColumn });
+    }
   };
 
   handleLike = (m) => {
@@ -52,7 +73,12 @@ class Movies extends Component {
             (m) => m.genre._id === this.state.selectedGenre._id
           )
         : this.state.movies;
-    const m = paginate(filtered, this.state.currentPage, this.state.pageSize);
+    let sorted = _.orderBy(
+      filtered,
+      [this.state.sortColumn.title],
+      this.state.sortColumn.order
+    );
+    const m = paginate(sorted, this.state.currentPage, this.state.pageSize);
     return (
       <div className="container">
         <div className="row">
@@ -78,10 +104,42 @@ class Movies extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Movie</th>
-                  <th>Genre</th>
-                  <th>Stock</th>
-                  <th>Rate</th>
+                  <th
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleSort("title")}
+                  >
+                    Movie
+                    {this.state.sortColumn.title === "title" && (
+                      <Caret order={this.state.sortColumn.order} />
+                    )}
+                  </th>
+                  <th
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleSort("genre.name")}
+                  >
+                    Genre
+                    {this.state.sortColumn.title === "genre.name" && (
+                      <Caret order={this.state.sortColumn.order} />
+                    )}
+                  </th>
+                  <th
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleSort("numberInStock")}
+                  >
+                    Stock
+                    {this.state.sortColumn.title === "numberInStock" && (
+                      <Caret order={this.state.sortColumn.order} />
+                    )}
+                  </th>
+                  <th
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleSort("dailyRentalRate")}
+                  >
+                    Rate
+                    {this.state.sortColumn.title === "dailyRentalRate" && (
+                      <Caret order={this.state.sortColumn.order} />
+                    )}
+                  </th>
                   <th></th>
                   <th></th>
                 </tr>
