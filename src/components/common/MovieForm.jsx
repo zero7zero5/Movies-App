@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { genres, getGenres } from "./../../services/fakeGenreService";
+import { getGenres } from "./../../services/fakeGenreService";
 import Joi from "joi-browser/dist/joi-browser";
 import { getMovie, saveMovie } from "../../services/fakeMovieService";
 
@@ -76,83 +76,85 @@ class MovieForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Movie Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div class="form-group">
-            <label htmlFor="exampleInputEmail1">Movie Name</label>
-            <input
-              name="title"
-              onChange={this.handleChange}
-              value={this.state.data.title}
-              type="text"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-            {this.state.errors.title && (
-              <div className="alert alert-danger">
-                {this.state.errors.title}
-              </div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Genre</label>
-            <select
-              onChange={this.handleChange}
-              name="genreId"
-              id="genreId"
-              className="form-control"
-            >
-              <option value="" />
-              {this.state.genres.map((option) => (
-                <option key={option._id} value={option._id}>
-                  {option.name}
-                </option>
-              ))}
-            </select>
-            {this.state.errors.genreId && (
-              <div className="alert alert-danger">
-                {this.state.errors.genreId}
-              </div>
-            )}
-          </div>
-          <div className="form-group">
-            <label htmlfor="exampleInputPassword1">Number In Stocks</label>
-            <input
-              value={this.state.data.numberInStock}
-              onChange={this.handleChange}
-              type="number"
-              name="numberInStock"
-              className="form-control"
-              id="exampleInputPassword1"
-            />
-            {this.state.errors.numberInStock && (
-              <div className="alert alert-danger">
-                {this.state.errors.numberInStock}
-              </div>
-            )}
-          </div>
-          <div class="form-group">
-            <label htmlfor="exampleInputPassword1">Rating</label>
-            <input
-              onChange={this.handleChange}
-              value={this.state.data.dailyRentalRate}
-              type="number"
-              className="form-control"
-              id="exampleInputPassword1"
-              name="dailyRentalRate"
-            />
-            {this.state.errors.dailyRentalRate && (
-              <div className="alert alert-danger">
-                {this.state.errors.dailyRentalRate}
-              </div>
-            )}
-          </div>
+        <div className="container">
+          <h1>Movie Form</h1>
+          <form onSubmit={this.handleSubmit}>
+            <div class="form-group">
+              <label htmlFor="exampleInputEmail1">Movie Name</label>
+              <input
+                name="title"
+                onChange={this.handleChange}
+                value={this.state.data.title}
+                type="text"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              {this.state.errors.title && (
+                <div className="alert alert-danger">
+                  {this.state.errors.title}
+                </div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Genre</label>
+              <select
+                onChange={this.handleChange}
+                name="genreId"
+                id="genreId"
+                className="form-control"
+              >
+                <option value="" />
+                {this.state.genres.map((option) => (
+                  <option key={option._id} value={option._id}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+              {this.state.errors.genreId && (
+                <div className="alert alert-danger">
+                  {this.state.errors.genreId}
+                </div>
+              )}
+            </div>
+            <div className="form-group">
+              <label htmlfor="exampleInputPassword1">Number In Stocks</label>
+              <input
+                value={this.state.data.numberInStock}
+                onChange={this.handleChange}
+                type="number"
+                name="numberInStock"
+                className="form-control"
+                id="exampleInputPassword1"
+              />
+              {this.state.errors.numberInStock && (
+                <div className="alert alert-danger">
+                  {this.state.errors.numberInStock}
+                </div>
+              )}
+            </div>
+            <div class="form-group">
+              <label htmlfor="exampleInputPassword1">Rating</label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.data.dailyRentalRate}
+                type="number"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="dailyRentalRate"
+              />
+              {this.state.errors.dailyRentalRate && (
+                <div className="alert alert-danger">
+                  {this.state.errors.dailyRentalRate}
+                </div>
+              )}
+            </div>
 
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
       </React.Fragment>
     );
   }

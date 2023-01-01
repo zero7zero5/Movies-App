@@ -5,9 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import Movies from "./components/movies";
 import "font-awesome/css/font-awesome.css";
-import MovieForm from "./components/common/MovieForm";
 
 ReactDOM.render(
   <React.StrictMode>

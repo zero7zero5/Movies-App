@@ -1,5 +1,5 @@
 import "./App.css";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
 import NavBar from "./components/common/navbar";
 import Movies from "./components/movies";
