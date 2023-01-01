@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { getGenres } from "../services/fakeGenreService";
 import { getMovies } from "../services/fakeMovieService";
 import Like from "./common/like";
-
+import { paginate } from "../services/paginate";
 import ListGroup from "./common/listGroup";
+import Pagination from "./common/Pagination";
 
 class Movies extends Component {
   state = {
     genre: [],
     movies: [],
+    pageSize: 4,
+    currentPage: 1,
   };
 
   componentDidMount() {
@@ -18,7 +21,10 @@ class Movies extends Component {
   }
 
   handleGenreSelect = (m) => {
-    this.setState({ selectedGenre: m });
+    this.setState({ selectedGenre: m, currentPage: 1 });
+  };
+  handlePageChange = (item) => {
+    this.setState({ currentPage: item });
   };
 
   handleLike = (m) => {
@@ -40,12 +46,13 @@ class Movies extends Component {
         <h1 style={{ textAlign: "center" }}>No movies in your database</h1>
       );
     }
-    const filtered =
+    let filtered =
       this.state.selectedGenre && this.state.selectedGenre._id
         ? this.state.movies.filter(
             (m) => m.genre._id === this.state.selectedGenre._id
           )
         : this.state.movies;
+    const m = paginate(filtered, this.state.currentPage, this.state.pageSize);
     return (
       <div className="container">
         <div className="row">
@@ -80,7 +87,7 @@ class Movies extends Component {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((m) => (
+                {m.map((m) => (
                   <tr key={m._id}>
                     <td>
                       <Link to={`/movieform/${m._id}`}>{m.title}</Link>
@@ -107,6 +114,14 @@ class Movies extends Component {
               </tbody>
             </table>
           </div>
+        </div>
+        <div>
+          <Pagination
+            length={filtered.length}
+            currentPage={this.state.currentPage}
+            pageSize={this.state.pageSize}
+            doPageChange={this.handlePageChange}
+          />
         </div>
       </div>
     );
