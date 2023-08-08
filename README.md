@@ -8,13 +8,11 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://www.linkpicture.com/q/Screenshot-26_6.png" alt="project-screenshot" >
+<img src="https://i.ibb.co/bFYdbGh/Screenshot-48.png" alt="project-screenshot" >
 
-<img src="https://www.linkpicture.com/q/Screenshot-27_8.png" alt="project-screenshot" >
+<img src="https://i.ibb.co/0hdqBSM/Screenshot-49.png" alt="project-screenshot" >
 
-<img src="https://www.linkpicture.com/q/Screenshot-28_3.png" alt="project-screenshot" >
-
-<img src="https://www.linkpicture.com/q/Screenshot-29_3.png" alt="project-screenshot" >
+<img src="https://i.ibb.co/kqjj3fX/Screenshot-50.png" alt="project-screenshot" >
 
   
   
